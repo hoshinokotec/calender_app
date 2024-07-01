@@ -1,0 +1,18 @@
+mongodb://<ユーザ名>:<パスワード>@<MongoDBサーバのIPアドレス>:<MongoDBサーバのポート番号>
+mongodb://root:password@localhost:27017
+
+
+docker run --rm \
+    --publish 5000:5000 \
+    --name api-local \
+    --net net-ktc-calender \
+    --env DB_HOST=mongodb-todo \
+    --env DB_PORT=27017 \
+    --env DB_NAME=db_calender \
+    --env DB_USER=root \
+    --env DB_PASSWORD=password \
+    api-todo-fastapi
+
+
+
+    curl -s http://localhost:5000/db_calender/66811460fb4722a981149f48 | jq '.'
